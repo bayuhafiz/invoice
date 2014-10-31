@@ -1,0 +1,51 @@
+body {
+    font-family:Arial;
+    color:#4c606a;
+}
+.bill-to {
+    float:left; 
+    width:300px;
+}
+.bill-from {
+    height:150px;
+}
+.invoice-logo {
+    width:225px; 
+    height:150px;
+}
+.invoice-head {
+    float:right; 
+    width:240px;
+}
+.invoice-head table {
+    border-collapse:collapse;
+    
+}
+.invoice-head table th {
+    background:#f5f7f8;
+    border:solid 1px #b8cbd4;
+    text-align:right;
+}
+.invoice-head table td { 
+    border:solid 1px #b8cbd4;
+}
+.invoice-items {
+    display:block; 
+    width:100%;
+}
+.invoice-items table {
+    position:relative; 
+    border-collapse: collapse;
+    
+}
+.invoice-items table th {
+    background:#f5f7f8;
+    border:solid 1px #b8cbd4;
+}
+.invoice-items table td {
+    border:solid 1px #b8cbd4;
+}
+.invoice-notes {
+    display:block; 
+    width:100%;
+}
