@@ -18,7 +18,7 @@ function lineBreaks($text)
 } 
 
 // generates invoice in PDF format
-function generateInvoice($address_from, $address_to, $logo_src, $date, $invoice_nr, $notes, $item_name, $item_qty, $item_desc, $item_price, $invoice_total_paid, $invoice_subtotal, $invoice_taxrate, $invoice_total_tax, $invoice_total_due, $action) 
+function generateInvoice($address_from, $address_to, $date, $invoice_nr, $notes, $item_name, $item_qty, $item_desc, $item_price, $invoice_subtotal, $action) 
 {
 
     // include php invoice templates
@@ -56,23 +56,11 @@ if (isset ($_POST['Submit'])) {
     $upload_dir = 'uploads/logos/';
     $random = rand(00000, 99999) . '_';
     
-    // Check if logo filetype is GIF, JPG or PNG and upload logo
-    $ext = pathinfo($_FILES['invoice_logo']['name'], PATHINFO_EXTENSION);
-    $allowed = array('jpg','png','gif');
-    if (!in_array($ext, $allowed)) {
-        $logo_src = '';
-    } else {
-        if(move_uploaded_file($_FILES['invoice_logo']['tmp_name'], $upload_dir . $random . $_FILES['invoice_logo']['name'])) {
-            $logo_src = $upload_dir . $random .  $_FILES['invoice_logo']['name'];
-        } else {  
-            $logo_src = '';
-        }
-    }
     
     // save all data input as variable and use makeSafe to prevent xss
     $address_from       = linebreaks(makeSafe($_POST['invoice_address_from']));
     $address_to         = linebreaks(makeSafe($_POST['invoice_address_to']));
-    $logo               = $_FILES['invoice_logo']['name'];
+    //$logo               = $_FILES['invoice_logo']['name'];
     $date               = makeSafe($_POST['invoice_date']);
     $invoice_nr         = makeSafe($_POST['invoice_nr']);
     $notes              = linebreaks(makeSafe($_POST['invoice_note']));
@@ -80,15 +68,11 @@ if (isset ($_POST['Submit'])) {
     $item_qty           = $_POST['item_qty'];
     $item_price         = $_POST['item_price'];
     $item_desc          = $_POST['item_description'];
-    $invoice_total_paid = makeSafe($_POST['invoice_total_paid']);
-    $invoice_taxrate    = makeSafe($_POST['invoice_taxrate']);
-    $invoice_total_tax  = makeSafe($_POST['invoice_total_tax']);
+    //$invoice_total_paid = makeSafe($_POST['invoice_total_paid']);
+    //$invoice_taxrate    = makeSafe($_POST['invoice_taxrate']);
+    //$invoice_total_tax  = makeSafe($_POST['invoice_total_tax']);
     $form_action        = makeSafe($_POST['Submit']);
-    
-    if ($invoice_total_paid == '') {
-        $invoice_total_paid = 0;
-    }
-    
+   
     $invoice_subtotal = 0;
     
     // account item prices and add to subtotal
@@ -96,10 +80,10 @@ if (isset ($_POST['Submit'])) {
         $invoice_subtotal = $invoice_subtotal + ($item_price[$a] * $item_qty[$a]);
     }
     
-    $invoice_total_due = $invoice_subtotal + $invoice_total_tax - $invoice_total_paid;
-    $invoice_taxrate = $invoice_taxrate * 100 - 100;
+    //$invoice_total_due = $invoice_subtotal + $invoice_total_tax - $invoice_total_paid;
+    //$invoice_taxrate = $invoice_taxrate * 100 - 100;
 
     // Create the invoice
-    generateInvoice($address_from, $address_to, $logo_src, $date, $invoice_nr, $notes, $item_name, $item_qty, $item_desc, $item_price, $invoice_total_paid, $invoice_subtotal, $invoice_taxrate, $invoice_total_tax, $invoice_total_due, $form_action); 
+    generateInvoice($address_from, $address_to, $date, $invoice_nr, $notes, $item_name, $item_qty, $item_desc, $item_price, $invoice_subtotal, $form_action); 
 }
 ?>

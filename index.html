@@ -60,20 +60,6 @@ Country
                     </div>
                 </div>
 
-                <!-- Invoice logo -->
-                <div class="col-md-5">          
-                    <div id="logo" >
-                        <h4>Logo</h4>
-
-                        <div class="logo_prev">
-                            <img id="img_prev" src="assets/img/logo-placeholder.png" alt="Your logo" class="img-thumbnail invoice-logo img-responsive"/>
-                        </div>
-                        <br>
-                        <input type='file' onchange="logoImg(this);" name="invoice_logo" class="select-logo" data-validation="mime size" data-validation-allowing="jpg, png, gif" data-validation-max-size="2M" data-validation-error-msg="Only jpg, gif or png are allowed (Max 2mb)" />
-                        <a class="delete-logo btn btn-default" style="" id="delete-logo" href="javascript:;" title="Remove row"><span class="glyphicon glyphicon-remove-circle"></span> Delete</a>
-
-                    </div>
-                </div>
               
             </div> <!-- End row 1 -->
         
@@ -109,10 +95,6 @@ Country
                         <tr>
                             <td class="invoice-data-td"><strong>Date</strong></td>
                             <td><input type="text" class="form-control datepicker" name="invoice_date" value=""></td>
-                        </tr>
-                        <tr>
-                            <td  class="invoice-data-td"><strong>Amount due</strong></td>
-                            <td  style="line-height:35px;"><div class="due">$0.00</div></td>
                         </tr>
                     </table>
                 </div>
@@ -163,45 +145,8 @@ Country
 
                           <tr>
                               <td colspan="2" class="blank"> </td>
-                              <td colspan="2" class="total-line" align="right">Subtotal:</td>
-                              <td class="total-value" align="right"><div id="subtotal">$0.00</div></td>
-                          </tr>
-
-                          <tr>
-                              <td colspan="2" class="blank"> </td>
-                              <td colspan="2" class="total-line" align="right">Vat:
-                              <select id="invoice_taxrate" name="invoice_taxrate"> 
-                              <option value="1.20">20%</option> <!-- Taxrate 20% will be the value of 1.20, etc -->
-                              <option value="1.21">21%</option> <!-- You can add more tax rate options to the select field -->
-                              </select>
-                              </td> <!-- Change your taxrate -->
-                              <td class="total-value" align="right">
-                                <div id="taxtotal">$0.00</div>
-                                <input type="hidden" id="invoice_total_tax" name="invoice_total_tax" value="">
-                              </td>
-                          </tr>
-                          
-                          <tr>
-                              <td colspan="2" class="blank"> </td>
-                              <td colspan="2" class="total-line" align="right">Total:</td>
-                              <td class="total-value" align="right"><div id="total">$0.00</div></td>
-                          </tr>
-                  
-                          <tr>
-                              <td colspan="2" class="blank"> </td>
-                              <td colspan="2" class="total-line" align="right" style="line-height:35px;">Total Paid:</td>
-                              <td class="total-value"> 
-                                  <div class="input-group input-group" style="margin-right:-5px;">
-                                      <span class="input-group-addon">$</span>
-                                      <input type="text" id="paid" class="form-control text-align-right" placeholder="0.00" name="invoice_total_paid">
-                                  </div>
-                              </td>
-                          </tr>
-                    
-                          <tr>
-                              <td colspan="2" class="blank"> </td>
-                              <td colspan="2" class="total-line balance" align="right"><font class="invoice-total">Total Due:</font></td>
-                              <td class="total-value balance" align="right"><h2><div class="due">$0.00</div></h2></td>
+                              <td colspan="2" class="total-line balance" align="right"><font class="invoice-total">Total:</font></td>
+                              <td class="total-value balance" align="right"><h2><div id="subtotal">$0.00</div></h2></td>
                           </tr>
               
                       </table>

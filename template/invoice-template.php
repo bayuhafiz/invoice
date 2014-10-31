@@ -58,7 +58,7 @@ if (isset($_POST['Submit'])) {
     $html .= '
                     <tr>
                         <th>Amount due</th>
-                        <td>$ '.number_format($invoice_total_due,2,'.',',').'</td>
+                        <td>$ '.number_format($invoice_subtotal,2, '.', ',').'</td>
                     </tr>
                 </table>
             </div>';
@@ -93,23 +93,7 @@ if (isset($_POST['Submit'])) {
     $html .= '
                     <tr>
                         <td colspan="4" align="right">Subtotal</td>
-                        <td align="right">$ '.number_format($invoice_subtotal,2, '.', ',').'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" align="right">Vat '.$invoice_taxrate.' %</td>
-                        <td align="right">$ '.number_format($invoice_subtotal + $invoice_total_tax - $invoice_subtotal,2, '.', ',').'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" align="right">Total</td>
-                        <td align="right">$ '.number_format($invoice_subtotal + $invoice_total_tax,2, '.', ',').'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" align="right">Paid</td>
-                        <td align="right">$ '.number_format($invoice_total_paid,2, '.', ',').'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" align="right">Total due</td>
-                        <td align="right"><strong>$ '.number_format($invoice_total_due,2, '.', ',').'</strong></td>
+                        <td align="right"><strong>$ '.number_format($invoice_subtotal,2, '.', ',').'</strong></td>
                     </tr>
                 </table>
             </div>
