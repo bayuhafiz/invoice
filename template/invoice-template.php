@@ -92,7 +92,7 @@ if (isset($_POST['Submit'])) {
     }
     $html .= '
                     <tr>
-                        <td colspan="4" align="right">Subtotal</td>
+                        <td colspan="4" align="right">Total</td>
                         <td align="right"><strong>$ '.number_format($invoice_subtotal,2, '.', ',').'</strong></td>
                     </tr>
                 </table>
